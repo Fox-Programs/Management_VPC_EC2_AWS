@@ -1,0 +1,108 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    display: flex;
+    background: #f0f2f5;
+    color: #232f3e;
+}
+
+nav {
+    width: 250px;
+    background: #232f3e;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+}
+
+main {
+    margin-left: 290px;
+    padding: 20px;
+    width: calc(100% - 310px);
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ff9900;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+code {
+    background: #eee;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-create {
+    background: #ff9900;
+    color: white;
+}
+
+.btn-create:hover {
+    background: #ec8b00;
+}
+
+.btn-delete {
+    background: #d9534f;
+    color: white;
+    font-size: 0.8em;
+}
+
+.btn-refresh {
+    background: #5bc0de;
+    color: white;
+}
+
+.status-running {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-stopped {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.status-terminated {
+    color: #6c757d;
+}
+
+.console {
+    background: #1a1a1a;
+    color: #00ff00;
+    font-family: monospace;
+    max-height: 150px;
+    overflow-y: auto;
+}

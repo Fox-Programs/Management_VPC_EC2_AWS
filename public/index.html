@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Dashboard Paris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <h2>AWS Console</h2>
+        <p>Région : <strong>eu-west-3</strong></p>
+        <hr>
+        <div id="status-indicator">Statut API: <span id="apiStatus">Vérification...</span></div>
+    </nav>
+
+    <main>
+        <section class="card">
+            <div class="card-header">
+                <h2>Instances EC2</h2>
+                <div>
+                    <button class="btn-create" onclick="createInstance()">+ Lancer t3.micro</button>
+                    <button class="btn-refresh" onclick="fetchInstances()">Rafraîchir</button>
+                </div>
+            </div>
+            <table id="ec2Table">
+                <thead>
+                    <tr>
+                        <th>ID Instance</th>
+                        <th>Type</th>
+                        <th>État</th>
+                        <th>Image (AMI)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <h2>Réseaux VPC</h2>
+                <div>
+                    <input type="text" id="vpcCidr" placeholder="Ex: 10.0.0.0/16">
+                    <button class="btn-create" onclick="createVpc()">Créer VPC</button>
+                    <button class="btn-refresh" onclick="fetchVpcs()">Rafraîchir</button>
+                </div>
+            </div>
+            <table id="vpcTable">
+                <thead>
+                    <tr>
+                        <th>ID VPC</th>
+                        <th>CIDR Block</th>
+                        <th>État</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section class="card console">
+            <h3>Console de Logs</h3>
+            <div id="logConsole">Bienvenue dans l'interface de gestion AWS.</div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
