@@ -106,3 +106,19 @@ button {
     max-height: 150px;
     overflow-y: auto;
 }
+
+.btn-action {
+    background: #5bc0de;
+    color: white;
+    margin-right: 5px;
+}
+
+.btn-rename {
+    background: #f0ad4e;
+    color: white;
+}
+
+td button {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+}

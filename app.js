@@ -40,6 +40,27 @@ app.delete('/api/instances/:id', async (req, res) => {
     } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
+app.put('/api/instances/:id/type', async (req, res) => {
+    try {
+        const { ModifyInstanceAttributeCommand } = require("@aws-sdk/client-ec2");
+        await client.send(new ModifyInstanceAttributeCommand({
+            InstanceId: req.params.id,
+            InstanceType: { Value: req.body.newType }
+        }));
+        res.json({ success: true });
+    } catch (err) { res.status(500).json({ error: err.message }); }
+});
+
+app.post('/api/instances/:id/state', async (req, res) => {
+    try {
+        const { StartInstancesCommand, StopInstancesCommand } = require("@aws-sdk/client-ec2");
+        const action = req.body.action;
+        const command = action === 'start' ? new StartInstancesCommand({ InstanceIds: [req.params.id] }) : new StopInstancesCommand({ InstanceIds: [req.params.id] });
+        await client.send(command);
+        res.json({ success: true });
+    } catch (err) { res.status(500).json({ error: err.message }); }
+});
+
 // --- ROUTES VPC ---
 app.get('/api/vpcs', async (req, res) => {
     try {
@@ -63,6 +84,17 @@ app.delete('/api/vpcs/:id', async (req, res) => {
     try {
         const command = new DeleteVpcCommand({ VpcId: req.params.id });
         await client.send(command);
+        res.json({ success: true });
+    } catch (err) { res.status(500).json({ error: err.message }); }
+});
+
+app.put('/api/vpcs/:id/name', async (req, res) => {
+    try {
+        const { CreateTagsCommand } = require("@aws-sdk/client-ec2");
+        await client.send(new CreateTagsCommand({
+            Resources: [req.params.id],
+            Tags: [{ Key: "Name", Value: req.body.newName }]
+        }));
         res.json({ success: true });
     } catch (err) { res.status(500).json({ error: err.message }); }
 });
